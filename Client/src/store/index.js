@@ -6,7 +6,7 @@ import { proxy } from "valtio";
 
 const state = proxy({
     intro: true, // Are we currently on the Home-Page or not
-    color: "EFBD48",
+    color: "#EFBD48",
     isLogoTexture: true,  // are we currently displaying the logo on shirt or not
     isFullTexture: false,   // inital texture on shirt set to false
     logoDecal: './threejs.png',  // initial logo to show to user
