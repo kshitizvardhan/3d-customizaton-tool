@@ -11,8 +11,18 @@ const Shirt = () => {
     const {nodes, materials} = useGLTF('/shirt_baked.glb')
     const logoTexture = useTexture(snap.logoDecal);
     const fullTexture = useTexture(snap.fullDecal);
+    // group, mesh are the components from react-three elements
+
+    useFrame((state, delta) => easing.dampC(materials.lambert1.color, snap.color, 0.25, delta));
+
+    // sometimes the shirt is not updating correclty, so we will add a key to group component, key can be a stateString.
+    // whenever the state changes key updates and react renders the model
+    // Key is a important concept in react as it helps react keep update and changes on track... so adding this might fix the problem.. infact it will.
+
+    const stateString = JSON.stringify(snap);
+     
   return (
-    <group>
+    <group key={stateString}>
         <mesh
             castShadow 
             geometry={nodes.T_Shirt_male.geometry}
@@ -20,10 +30,28 @@ const Shirt = () => {
             material-roughness={1}
             dispose={null}
         >
-
+          {snap.isFullTexture && (
+            <Decal 
+              position={[0,0,0]}
+              rotation={[0,0,0]}
+              scale={1}
+              map={fullTexture}
+            />
+          )}
+          {snap.isLogoTexture && (
+            <Decal 
+              position={[0,0.04,0.15]}
+              rotation={[0,0,0]}
+              scale={0.15}  // this sets the size of logo.
+              map={logoTexture}
+              anisotropy={16}
+              depthTest={false}
+              depthwrite={true}
+            />
+          )}
         </mesh>
     </group>
   )
 }
 
-export default Shirt
+export default Shirt;
