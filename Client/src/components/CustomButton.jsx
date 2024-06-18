@@ -5,11 +5,17 @@ import { useSnapshot } from 'valtio'
 const CustomButton = ({title, type, customStyles, handleClick}) => {
     const snap = useSnapshot(state);
     const generateStyle = (type) => {
-        if(type == "filled"){
+        if(type === "filled"){
             return{
-                backgroundColor: snap.color,
+                backgroundColor: "#EFBD48",
                 color: "#fff"
             }
+        } else if (type === "outline"){
+          return{
+            borderWidth: "1px",
+            borderColor: "#EFBD48",
+            color: "#fff"
+          }
         }
     }
     
