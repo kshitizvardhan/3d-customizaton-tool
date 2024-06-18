@@ -24,6 +24,7 @@ router.route("/").post(async (req,res) => {
 
         // send request to generate the image
         const response = await openai.images.generate({
+            model: "dall-e-3",
             prompt,
             n: 1,
             size: "1024x1024",
@@ -40,7 +41,7 @@ router.route("/").post(async (req,res) => {
         console.error(error);
         res.status(500).json({ message: "Something went Wrong" })
     }
-    
+
 })
 
 export default router
