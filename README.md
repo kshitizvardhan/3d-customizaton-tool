@@ -34,4 +34,3 @@ https://github.com/kshitizvardhan/3d-customizaton-tool/assets/143323194/095ff12a
 - **Component Animation**: Animating React components seamlessly with Framer Motion.
 
 Thank you for exploring the 3D Shirt Customization Tool project! This project has provided me with valuable insights into combining 3D graphics with web technologies, preparing me to create dynamic and interactive applications.
-# 3d-shop
