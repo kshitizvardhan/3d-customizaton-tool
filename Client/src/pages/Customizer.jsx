@@ -32,6 +32,12 @@ const Customizer = () => {
     stylishShirt: false
   })
 
+  // Fix: Toggle Active Tab Buttons for better user-experience
+  // Handle toggling active editor tab
+  const handleActiveEditorTab = (tabname) => {
+    setActiveEditorTab((prevTab) => (prevTab === tabname ? "" : tabname));
+  };
+
   // show the tab content depending on the active tab
   // logic-> we will have switch statement which will look for the activeEditorTab  state variable, if the the state variable is ColorPicker then return a ColorPicker Component... similarly for others you can do.
 
@@ -140,7 +146,7 @@ const Customizer = () => {
             <div className='flex items-center min-h-screen'>
                 <div className='editortabs-container tabs'>
                   {EditorTabs.map((tab)=>(
-                    <Tab key={tab.name} tab={tab} handleClick={()=>{setActiveEditorTab(tab.name)}}/>
+                    <Tab key={tab.name} tab={tab} handleClick={()=>{handleActiveEditorTab(tab.name)}}/>
                   ))}
                   {/* Changing state as the user clicks and below calling the function to render the component */}
                   {generateTabContent()}
